@@ -106,6 +106,19 @@ public class ListHabitsBehavior
             }));
     }
 
+    public void onExportProv() {
+        System.out.println("Prov gonna roll");
+
+        File outputDir = dirFinder.getCSVOutputDir();
+
+        taskRunner.execute(
+                new ExportProvTask(outputDir, filename ->
+                {
+                    if (filename != null) screen.showSendFileScreen(filename);
+                    else screen.showMessage(Message.COULD_NOT_EXPORT);
+                }));
+    }
+
     public void onFirstRun()
     {
         prefs.setFirstRun(false);

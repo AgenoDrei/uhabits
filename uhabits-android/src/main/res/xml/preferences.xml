@@ -93,6 +93,12 @@
         </Preference>
 
         <Preference
+            android:key="exportProv"
+            android:summary="@string/export_as_prov_summary"
+            android:title="@string/export_to_provn">
+        </Preference>
+
+        <Preference
             android:key="importData"
             android:summary="@string/import_data_summary"
             android:title="@string/import_data">

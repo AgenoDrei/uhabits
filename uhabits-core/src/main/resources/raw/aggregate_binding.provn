@@ -1,0 +1,23 @@
+document
+prefix bnode <http://openprovenance.org/provtoolbox/bnode/>
+prefix pre_0 <file:/home/pservice/files/>
+prefix tmpl <http://openprovenance.org/tmpl#>
+prefix var <http://openprovenance.org/var#>
+prefix ex <http://example.com/#>
+prefix rdf <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+entity(var:userdata2,[tmpl:value_0 = 'ex:userdata2'])
+entity(var:user_label,[tmpl:2dvalue_0_0 = "Example User" %% xsd:string])
+entity(var:usage_time,[tmpl:2dvalue_0_0 = "2001-10-26T21:33:56" %% xsd:string])
+entity(var:action_type,[tmpl:2dvalue_0_0 = "ex:Aggregator" %% xsd:string])
+entity(var:agent,[tmpl:value_0 = 'ex:agent'])
+entity(var:userdata_label,[tmpl:2dvalue_0_0 = "Example userdata" %% xsd:string])
+entity(var:start,[tmpl:2dvalue_0_0 = "2001-10-26T21:32:52" %% xsd:string])
+entity(var:userdata2_label,[tmpl:2dvalue_0_0 = "Example userdata2" %% xsd:string])
+entity(var:userdata,[tmpl:value_0 = 'ex:userdata'])
+entity(var:userdata_type,[tmpl:2dvalue_0_0 = 'prov:UserData'])
+entity(var:userdata2_type,[tmpl:2dvalue_0_0 = 'prov:UserData'])
+entity(var:agent_label,[tmpl:2dvalue_0_0 = "Example Software Agent" %% xsd:string])
+entity(var:user,[tmpl:value_0 = 'pre_0:simon.mueller@dlr.de'])
+entity(var:end,[tmpl:2dvalue_0_0 = "2001-10-26T21:34:52" %% xsd:string])
+entity(var:generation_time,[tmpl:2dvalue_0_0 = "2001-10-26T21:33:52" %% xsd:string])
+endDocument

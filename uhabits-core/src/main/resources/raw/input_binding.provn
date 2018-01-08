@@ -1,0 +1,20 @@
+document
+prefix dlr <http://dlr.de/#>
+prefix pre_0 <file:/home/pservice/files/>
+prefix rdf <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix ex <http://example.com/#>
+prefix bnode <http://openprovenance.org/provtoolbox/bnode/>
+prefix tmpl <http://openprovenance.org/tmpl#>
+prefix var <http://openprovenance.org/var#>
+entity(var:user_label,[tmpl:2dvalue_0_0 = "Example User" %% xsd:string])
+entity(var:input_end,[tmpl:2dvalue_0_0 = "2001-10-26T21:34:52" %% xsd:string])
+entity(var:agent,[tmpl:value_0 = 'ex:agent'])
+entity(var:input_start,[tmpl:2dvalue_0_0 = "2001-10-26T21:32:52" %% xsd:string])
+entity(var:userdata,[tmpl:value_0 = 'ex:userdata'])
+entity(var:userdata_type,[tmpl:2dvalue_0_0 = 'prov:UserData'])
+entity(var:userdata_label,[tmpl:2dvalue_0_0 = "Example userdata" %% xsd:string])
+entity(var:agent_label,[tmpl:2dvalue_0_0 = "Example SoftwareAgent" %% xsd:string])
+entity(var:user,[tmpl:value_0 = 'pre_0:simon.mueller@dlr.de'])
+entity(var:generation_time,[tmpl:2dvalue_0_0 = "2001-10-26T21:33:52" %% xsd:string])
+entity(var:input_type,[tmpl:2dvalue_0_0 = "ex:FitbitApi" %% xsd:string])
+endDocument

@@ -15,6 +15,12 @@ ext {
 android {
     compileSdkVersion COMPILE_SDK_VERSION as Integer
     buildToolsVersion BUILD_TOOLS_VERSION
+    dexOptions {
+        jumboMode = true
+    }
+    defaultConfig {
+        multiDexEnabled true
+    }
 
     if(project.hasProperty("LOOP_STORE_FILE")) {
         signingConfigs {

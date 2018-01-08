@@ -49,6 +49,7 @@ const val RESULT_BUG_REPORT = 4
 const val RESULT_REPAIR_DB = 5
 const val REQUEST_OPEN_DOCUMENT = 6
 const val REQUEST_SETTINGS = 7
+const val RESULT_EXPORT_PROV = 8
 
 @ActivityScope
 class ListHabitsScreen
@@ -124,6 +125,7 @@ class ListHabitsScreen
             RESULT_EXPORT_DB -> onExportDB()
             RESULT_BUG_REPORT -> behavior.get().onSendBugReport()
             RESULT_REPAIR_DB -> behavior.get().onRepairDB()
+            RESULT_EXPORT_PROV -> behavior.get().onExportProv()
         }
     }
 

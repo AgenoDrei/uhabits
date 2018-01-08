@@ -41,6 +41,7 @@ import static android.media.RingtoneManager.EXTRA_RINGTONE_TYPE;
 import static android.media.RingtoneManager.TYPE_NOTIFICATION;
 import static org.isoron.uhabits.activities.habits.list.ListHabitsScreenKt.RESULT_BUG_REPORT;
 import static org.isoron.uhabits.activities.habits.list.ListHabitsScreenKt.RESULT_EXPORT_CSV;
+import static org.isoron.uhabits.activities.habits.list.ListHabitsScreenKt.RESULT_EXPORT_PROV;
 import static org.isoron.uhabits.activities.habits.list.ListHabitsScreenKt.RESULT_EXPORT_DB;
 import static org.isoron.uhabits.activities.habits.list.ListHabitsScreenKt.RESULT_IMPORT_DATA;
 import static org.isoron.uhabits.activities.habits.list.ListHabitsScreenKt.RESULT_REPAIR_DB;
@@ -88,6 +89,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
         setResultOnPreferenceClick("exportDB", RESULT_EXPORT_DB);
         setResultOnPreferenceClick("repairDB", RESULT_REPAIR_DB);
         setResultOnPreferenceClick("bugReport", RESULT_BUG_REPORT);
+        setResultOnPreferenceClick("exportProv", RESULT_EXPORT_PROV);
     }
 
     @Override

@@ -28,6 +28,9 @@ class HabitsDirFinder @Inject
 constructor(
         private val androidDirFinder: AndroidDirFinder
 ) : ShowHabitMenuBehavior.System, ListHabitsBehavior.DirFinder {
+    override fun getProvOutputDir(): File {
+        return androidDirFinder.getFilesDir("PROV")!!
+    }
 
     override fun getCSVOutputDir(): File {
         return androidDirFinder.getFilesDir("CSV")!!

@@ -19,10 +19,12 @@
 
 package org.isoron.uhabits.activities.settings;
 
-import android.os.*;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 
-import org.isoron.androidbase.activities.*;
-import org.isoron.androidbase.utils.*;
+import org.isoron.androidbase.activities.BaseActivity;
+import org.isoron.androidbase.activities.BaseScreen;
+import org.isoron.androidbase.utils.StyledResources;
 import org.isoron.uhabits.R;
 
 /**
@@ -36,6 +38,11 @@ public class SettingsActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
         setupActionBarColor();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     private void setupActionBarColor()

@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -31,10 +32,10 @@ public class HabitsProvExporter {
     private ProvenanceUtil util;
     private InteropFramework fw;
 
-    public HabitsProvExporter(@NonNull File dir)
+    public HabitsProvExporter(@NonNull File dir, @NonNull String username)
     {
         this.exportDirName = dir.getAbsolutePath() + "/";
-        util = new ProvenanceUtil("user", "loophabits.org", "anomynous@loophabits.org");
+        util = new ProvenanceUtil("user", "loophabits.org", username);
 
         ProvFactory p = InteropFramework.newXMLProvFactory();
         fw = new InteropFramework(p);
@@ -48,11 +49,10 @@ public class HabitsProvExporter {
 
         Document merge = util.mergeDocuments(input, agg, export);
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(DateUtils.getStartOfToday());
-        String provnFilename = String.format("%s/Loop Habits PROVN %s.provn", exportDirName, date);
+        String provNFilename = String.format("%s/Loop Habits PROVN %s.provn", exportDirName, date);
 
-        fw.writeDocument(provnFilename, merge);
-
-        return provnFilename;
+        fw.writeDocument(provNFilename, merge);
+        return provNFilename;
     }
 }
 

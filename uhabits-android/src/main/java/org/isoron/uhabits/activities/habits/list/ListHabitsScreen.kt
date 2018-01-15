@@ -21,7 +21,9 @@ package org.isoron.uhabits.activities.habits.list
 
 import android.app.*
 import android.content.*
+import android.net.Uri
 import android.support.annotation.*
+import android.support.v4.content.ContextCompat.startActivity
 import dagger.*
 import org.isoron.androidbase.activities.*
 import org.isoron.androidbase.utils.*
@@ -76,6 +78,12 @@ class ListHabitsScreen
     ListHabitsBehavior.Screen,
     ListHabitsMenuBehavior.Screen,
     ListHabitsSelectionMenuBehavior.Screen {
+    override fun showImage(filename: String) {
+        val intent = Intent()
+        intent.action = Intent.ACTION_VIEW
+        intent.setDataAndType(Uri.parse("file://" + filename), "image/*")
+        startActivity(this.activity.applicationContext, intent, null)
+    }
 
     init {
         setRootView(rootView)

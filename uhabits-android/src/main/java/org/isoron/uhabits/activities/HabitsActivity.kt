@@ -19,8 +19,12 @@
 
 package org.isoron.uhabits.activities
 
+import android.Manifest
 import android.content.*
+import android.content.pm.PackageManager
 import android.os.*
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import org.isoron.androidbase.activities.*
 import org.isoron.uhabits.*
 import org.isoron.uhabits.core.models.*
@@ -46,6 +50,24 @@ abstract class HabitsActivity : BaseActivity() {
                 .build()
 
         component.themeSwitcher.apply()
+
+        getPermissions();
+
+    }
+
+    private fun getPermissions() {
+        val permission = ContextCompat.checkSelfPermission(this, Manifest.permission.GET_ACCOUNTS)
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.GET_ACCOUNTS)) {
+
+            } else {
+                // No explanation needed, we can request the permission.
+                val PERMISSIONS_REQUEST_GET_ACCOUNTS = 0
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.GET_ACCOUNTS), PERMISSIONS_REQUEST_GET_ACCOUNTS)
+            }
+        }
     }
 
     private fun getHabitFromIntent(habitList: HabitList): Habit? {

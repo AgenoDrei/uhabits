@@ -55,4 +55,7 @@ abstract class ListHabitsModule {
 
     @Binds
     abstract fun getSystem(system: HabitsDirFinder): ListHabitsBehavior.DirFinder
+
+    @Binds
+    abstract fun getUserEmail(user: UsernameFinder): ListHabitsBehavior.UsernameFinder
 }

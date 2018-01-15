@@ -118,4 +118,9 @@ public class ShowHabitMenuBehavior
     {
         File getCSVOutputDir();
     }
+
+    public interface User
+    {
+        String getUserEmail();
+    }
 }

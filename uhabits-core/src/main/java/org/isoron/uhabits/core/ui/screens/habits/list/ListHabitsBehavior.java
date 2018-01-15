@@ -41,6 +41,9 @@ public class ListHabitsBehavior
     private final DirFinder dirFinder;
 
     @NonNull
+    private final UsernameFinder usernameFinder;
+
+    @NonNull
     private final TaskRunner taskRunner;
 
     @NonNull
@@ -62,6 +65,7 @@ public class ListHabitsBehavior
                               @NonNull Screen screen,
                               @NonNull CommandRunner commandRunner,
                               @NonNull Preferences prefs,
+                              @NonNull UsernameFinder usernameFinder,
                               @NonNull BugReporter bugReporter)
     {
         this.habitList = habitList;
@@ -71,6 +75,7 @@ public class ListHabitsBehavior
         this.commandRunner = commandRunner;
         this.prefs = prefs;
         this.bugReporter = bugReporter;
+        this.usernameFinder = usernameFinder;
     }
 
     public void onClickHabit(@NonNull Habit h)
@@ -107,14 +112,17 @@ public class ListHabitsBehavior
     }
 
     public void onExportProv() {
-        System.out.println("Prov gonna roll");
-
-        File outputDir = dirFinder.getCSVOutputDir();
+        //System.out.println("Prov gonna roll");
+        File outputDir = dirFinder.getProvOutputDir();
+        String username = usernameFinder.getUserEmail();
 
         taskRunner.execute(
-                new ExportProvTask(outputDir, filename ->
+                new ExportProvTask(outputDir, username, filename ->
                 {
-                    if (filename != null) screen.showSendFileScreen(filename);
+                    if (filename != null) {
+                        screen.showSendFileScreen(filename);
+                        //screen.showImage(filenames.get(1));
+                    }
                     else screen.showMessage(Message.COULD_NOT_EXPORT);
                 }));
     }
@@ -185,7 +193,14 @@ public class ListHabitsBehavior
     public interface DirFinder
     {
         File getCSVOutputDir();
+        File getProvOutputDir();
     }
+
+    public interface UsernameFinder
+    {
+       String getUserEmail();
+    }
+
 
     public interface NumberPickerCallback
     {
@@ -207,5 +222,7 @@ public class ListHabitsBehavior
         void showSendBugReportToDeveloperScreen(String log);
 
         void showSendFileScreen(@NonNull String filename);
+
+        void showImage(@NonNull String filename);
     }
 }

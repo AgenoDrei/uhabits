@@ -24,7 +24,6 @@ import android.support.annotation.*;
 import com.google.auto.factory.*;
 
 import org.isoron.uhabits.core.io.*;
-import org.isoron.uhabits.core.models.*;
 
 import java.io.*;
 import java.util.*;
@@ -32,18 +31,20 @@ import java.util.*;
 @AutoFactory(allowSubclasses = true)
 public class ExportProvTask implements Task
 {
-    private String archiveFilename;
-
+    private String filename;
+    private String username;
     private File outputDir;
 
     @NonNull
     private final ExportProvTask.Listener listener;
 
     public ExportProvTask(@NonNull File outputDir,
+                         @NonNull String username,
                          @NonNull Listener listener)
     {
         this.listener = listener;
         this.outputDir = outputDir;
+        this.username = username;
     }
 
     @Override
@@ -52,8 +53,8 @@ public class ExportProvTask implements Task
         try
         {
             HabitsProvExporter exporter;
-            exporter = new HabitsProvExporter(outputDir);
-            archiveFilename = exporter.writeArchive();
+            exporter = new HabitsProvExporter(outputDir, username);
+            filename = exporter.writeArchive();
         }
         catch (IOException e)
         {
@@ -64,11 +65,11 @@ public class ExportProvTask implements Task
     @Override
     public void onPostExecute()
     {
-        listener.onExportProvFinished(archiveFilename);
+        listener.onExportProvFinished(filename);
     }
 
     public interface Listener
     {
-        void onExportProvFinished(@Nullable String archiveFilename);
+        void onExportProvFinished(@Nullable String filename);
     }
 }

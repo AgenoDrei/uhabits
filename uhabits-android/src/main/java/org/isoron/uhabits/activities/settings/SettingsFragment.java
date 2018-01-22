@@ -43,6 +43,7 @@ import static org.isoron.uhabits.activities.habits.list.ListHabitsScreenKt.RESUL
 import static org.isoron.uhabits.activities.habits.list.ListHabitsScreenKt.RESULT_EXPORT_CSV;
 import static org.isoron.uhabits.activities.habits.list.ListHabitsScreenKt.RESULT_EXPORT_PROV;
 import static org.isoron.uhabits.activities.habits.list.ListHabitsScreenKt.RESULT_EXPORT_DB;
+import static org.isoron.uhabits.activities.habits.list.ListHabitsScreenKt.RESULT_EXPORT_PROV_STORE;
 import static org.isoron.uhabits.activities.habits.list.ListHabitsScreenKt.RESULT_IMPORT_DATA;
 import static org.isoron.uhabits.activities.habits.list.ListHabitsScreenKt.RESULT_REPAIR_DB;
 
@@ -90,6 +91,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
         setResultOnPreferenceClick("repairDB", RESULT_REPAIR_DB);
         setResultOnPreferenceClick("bugReport", RESULT_BUG_REPORT);
         setResultOnPreferenceClick("exportProv", RESULT_EXPORT_PROV);
+        setResultOnPreferenceClick("exportProvStore", RESULT_EXPORT_PROV_STORE);
     }
 
     @Override

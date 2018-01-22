@@ -127,6 +127,25 @@ public class ListHabitsBehavior
                 }));
     }
 
+
+    public void onExportProvStore() {
+        File outputDir = dirFinder.getProvOutputDir();
+        String username = usernameFinder.getUserEmail();
+
+        taskRunner.execute(
+                new CreateProvDocumentTask(username, doc ->
+                {
+                    if (doc != null) {
+                        taskRunner.execute(new UploadProvTask(doc, resCode -> {
+                            if(resCode > 226)
+                                screen.showMessage(Message.COULD_NOT_UPLOAD);
+                            else screen.showMessage(Message.UPLOAD_SUCCESSFUL);
+                        }));
+                    }
+                    else screen.showMessage(Message.COULD_NOT_UPLOAD);
+                }));
+    }
+
     public void onFirstRun()
     {
         prefs.setFirstRun(false);
@@ -180,7 +199,7 @@ public class ListHabitsBehavior
     public enum Message
     {
         COULD_NOT_EXPORT, IMPORT_SUCCESSFUL, IMPORT_FAILED, DATABASE_REPAIRED,
-        COULD_NOT_GENERATE_BUG_REPORT, FILE_NOT_RECOGNIZED
+        COULD_NOT_GENERATE_BUG_REPORT, FILE_NOT_RECOGNIZED, COULD_NOT_UPLOAD, UPLOAD_SUCCESSFUL
     }
 
     public interface BugReporter

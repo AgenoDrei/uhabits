@@ -52,6 +52,7 @@ const val RESULT_REPAIR_DB = 5
 const val REQUEST_OPEN_DOCUMENT = 6
 const val REQUEST_SETTINGS = 7
 const val RESULT_EXPORT_PROV = 8
+const val RESULT_EXPORT_PROV_STORE = 9
 
 @ActivityScope
 class ListHabitsScreen
@@ -134,6 +135,7 @@ class ListHabitsScreen
             RESULT_BUG_REPORT -> behavior.get().onSendBugReport()
             RESULT_REPAIR_DB -> behavior.get().onRepairDB()
             RESULT_EXPORT_PROV -> behavior.get().onExportProv()
+            RESULT_EXPORT_PROV_STORE -> behavior.get().onExportProvStore()
         }
     }
 
@@ -206,6 +208,8 @@ class ListHabitsScreen
                         DATABASE_REPAIRED -> R.string.database_repaired
                         COULD_NOT_GENERATE_BUG_REPORT -> R.string.bug_report_failed
                         FILE_NOT_RECOGNIZED -> R.string.file_not_recognized
+                        COULD_NOT_UPLOAD -> R.string.could_not_upload
+                        UPLOAD_SUCCESSFUL -> R.string.upload_successful
                     })
     }
 

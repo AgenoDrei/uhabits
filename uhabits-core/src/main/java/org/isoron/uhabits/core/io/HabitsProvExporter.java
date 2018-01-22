@@ -16,6 +16,7 @@ import org.openprovenance.prov.template.Expand;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,24 +36,30 @@ public class HabitsProvExporter {
     public HabitsProvExporter(@NonNull File dir, @NonNull String username)
     {
         this.exportDirName = dir.getAbsolutePath() + "/";
-        util = new ProvenanceUtil("user", "loophabits.org", username);
+        util = new ProvenanceUtil("user", "http://loophabits.org/", username);
 
         ProvFactory p = InteropFramework.newXMLProvFactory();
         fw = new InteropFramework(p);
+
     }
 
     public String writeArchive() throws IOException
     {
+        Document merge = createDocument();
+        String date = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(DateUtils.getStartOfToday());
+        String provNFilename = String.format("%s/Loop Habits PROVN %s.json", exportDirName, date);
+
+        fw.writeDocument(provNFilename, merge);
+        return provNFilename;
+    }
+
+    public Document createDocument() {
         Document input = util.createInputDocument("Loop Tracking User", "HabitData", "Habit Userdata", "Loop Habit Tracking");
         Document agg = util.createAggregationDocument("HabitData", "Loop Tracking User", "Aggregated Userdata", "Habit Userdata", "Loop Habit Tracking", "HabitSummary");
         Document export = util.createExportDocument("HabitSummary", "Loop Tracking User", "Exported Userdata", "Aggregated Userdata", "Loop Habit Tracking", "HabitReport");
 
         Document merge = util.mergeDocuments(input, agg, export);
-        String date = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(DateUtils.getStartOfToday());
-        String provNFilename = String.format("%s/Loop Habits PROVN %s.provn", exportDirName, date);
-
-        fw.writeDocument(provNFilename, merge);
-        return provNFilename;
+        return  merge;
     }
 }
 

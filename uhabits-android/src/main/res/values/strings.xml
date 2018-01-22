@@ -225,4 +225,8 @@
     <string name="target">Target</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="export_to_prov_store_summary">Uploads provenance document to an open provenance store</string>
+    <string name="export_to_prov_store">Export to ProvStore</string>
+    <string name="could_not_upload">Upload to ProvStore failed</string>
+    <string name="upload_successful">Upload to Provenance Store successful</string>
 </resources>
